@@ -1,0 +1,114 @@
+﻿@model EduNgoWebsite.Models.Volunteer
+  <style>
+
+        .container {
+            max-width: 1807px;
+        }
+    </style>
+<h2 style="text-align:center">Volunteer Registration</h2>
+<br />
+<br />
+
+<div class="container" style="margin-left: 80px;">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-form-label">Name</label>
+                    <input asp-for="Name" class="form-control" maxlength="50" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Age" class="col-form-label">Age</label>
+                    <input asp-for="Age" class="form-control" type="number"/>
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Gender" class="col-form-label">Gender</label>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="col-form-label">Mobile Number</label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="EmailAddress" class="col-form-label">Email Address</label>
+                    <input asp-for="EmailAddress" class="form-control" maxlength="50" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Address" class="col-form-label">Address</label>
+                    <input asp-for="Address" class="form-control" maxlength="100" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="City" class="col-form-label">City</label>
+                    <input asp-for="City" class="form-control" maxlength="50" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="StateId" class="col-form-label">State</label>
+                    <select asp-for="StateId" class="form-control" asp-items="@(new SelectList(ViewBag.StateList,"StateId","StateName"))">
+                    </select>
+                    <span asp-validation-for="StateId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="PINCode" class="col-form-label">PIN Code</label>
+                    <input asp-for="PINCode" class="form-control" />
+                    <span asp-validation-for="PINCode" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-md-9 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+<br />
+</div> 
+
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
